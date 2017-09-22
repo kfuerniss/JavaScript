@@ -9,6 +9,7 @@
 			"github": "kfuerniss",
 			"location": "Henderson, NV"
 			},
+		"welcomeMessage": "Trying to get better",
 		"skills": [
 			"Verint", "JavaScript", "HTML"
 			],
@@ -77,9 +78,11 @@
 
 //Education
 	var education = {
-		"school" : [{"name" : "University of Phoenix", "dates" : "2002-2004", "city" : "Wichita, KS", "degree" : "MS CIS"},
-		            {"name" : "Newman University", "dates": "2000-2002", "city" : "Wichita, KS", "degree" : "BS CIS"}
+		"school" : [{"name" : "University of Phoenix", "dates" : "2002-2004", "location" : "Wichita, KS", "degree" : "MS CIS"},
+		            {"name" : "Newman University", "dates": "2000-2002", "location" : "Wichita, KS", "degree" : "BS CIS"}
 		           ],
+		"onlineCourse" : [{"title" : "HTML", "school" : "Udacity", "date" : "2016-2017", "url" : "Udacity.com"},
+						  {"title" : "JavaScript", "school" : "Udacity", "date" : "2016-2017", "url" : "Udacity.com"}]
 
 	"display": function () {
         var edu = $("#education");
@@ -87,10 +90,20 @@
             var eduEntry = $(HTMLschoolStart);
             eduEntry.append(HTMLschoolName.replace("%data%", school.name) + HTMLschoolDegree.replace("%data%", school.degree));
             eduEntry.append(HTMLschoolDates.replace("%data%", school.dates));
-            eduEntry.append(HTMLschoolCity.replace("%data%", school.city));
+            eduEntry.append(HTMLschoollocation.replace("%data%", school.location));
+            eduEntry.append(HTMLschoolMajor.replace("%data%", school.majors.join(", ")));
             edu.append(eduEntry);
 		});
-    	}
+		edu.append(HTMLonlineClasses);
+		this.onlineCourses.forEach((course)=>{
+			var eduEntry = $(HTMLschoolStart);
+			eduEntry.append(HTMLonlineTitle.replace("%data%", course.title) + HTMLonlineSchool.replace("%data%", course.school));
+			eduEntry.append(HTMLonlineDates.replace("%data%", course.dates));
+			eduEntry.append(HTMLonlineURL.replace("%data%", course.url));
+			ed.append(edEntry);
+		});
+		}
+    	
 	};
 
 //Projects	
