@@ -60,14 +60,14 @@ var bio = {
 
 //Work	
 var work = {
-    "position": [
+    "jobs": [
         { "title": "Application Developer", "dates": "2007-current", "location": "San Antonio, TX/Las Vegas, NV" },
         { "title": "Engineer", "dates": "2005-2007", "location": "San Antonio, TX" }
     ],
 
     "display": function () {
         var pos = $("#workExperience");
-        this.position.forEach((position) => {
+        this.jobs.forEach((position) => {
             var posEntry = $(HTMLworkStart);
             posEntry.append(HTMLworkEmployer.replace("%data%", position.title) + HTMLworkDates.replace("%data%", position.dates));
             posEntry.append(HTMLworkLocation.replace("%data%", position.location));
@@ -78,15 +78,15 @@ var work = {
 
 //Education
 var education = {
-    "school": [{ "name": "University of Phoenix", "dates": "2002-2004", "location": "Wichita, KS", "degree": "Masters", "majors": ["Computer Information System"] },
+    "schools": [{ "name": "University of Phoenix", "dates": "2002-2004", "location": "Wichita, KS", "degree": "Masters", "majors": ["Computer Information System"] },
     { "name": "Newman University", "dates": "2000-2002", "location": "Wichita, KS", "degree": "Bachelors", "majors": ["Computer Information System"] }
     ],
-    "onlineCourses": [{ "title": "HTML", "school": "Udacity", "date": "2016-2017", "url": "Udacity.com" },
-    { "title": "JavaScript", "school": "Udacity", "date": "2016-2017", "url": "Udacity.com" }],
+    "onlineCourses": [{ "title": "HTML", "school": "Udacity", "dates": "2016-2017", "url": "Udacity.com" },
+    { "title": "JavaScript", "school": "Udacity", "dates": "2016-2017", "url": "Udacity.com" }],
 
 	"display": function () {
         var edu = $("#education");
-        this.school.forEach((school) => {
+        this.schools.forEach((school) => {
             var eduEntry = $(HTMLschoolStart);
             eduEntry.append(HTMLschoolName.replace("%data%", school.name) + HTMLschoolDegree.replace("%data%", school.degree));
             eduEntry.append(HTMLschoolDates.replace("%data%", school.dates));
