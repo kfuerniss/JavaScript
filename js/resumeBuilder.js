@@ -13,7 +13,7 @@ var bio = {
     "skills": [
         "Verint", "JavaScript", "HTML"
     ],
-    "bioPic": "image/kim.jpg",
+    "biopic": "images/fry.jpg",
     //},
 
     "display": function () {
@@ -78,10 +78,10 @@ var work = {
 
 //Education
 var education = {
-    "school": [{ "name": "University of Phoenix", "dates": "2002-2004", "location": "Wichita, KS", "degree": "MS CIS" },
-    { "name": "Newman University", "dates": "2000-2002", "location": "Wichita, KS", "degree": "BS CIS" }
+    "school": [{ "name": "University of Phoenix", "dates": "2002-2004", "location": "Wichita, KS", "degree": "Masters", "majors": ["Computer Information System"] },
+    { "name": "Newman University", "dates": "2000-2002", "location": "Wichita, KS", "degree": "Bachelors", "majors": ["Computer Information System"] }
     ],
-    "onlineCourse": [{ "title": "HTML", "school": "Udacity", "date": "2016-2017", "url": "Udacity.com" },
+    "onlineCourses": [{ "title": "HTML", "school": "Udacity", "date": "2016-2017", "url": "Udacity.com" },
     { "title": "JavaScript", "school": "Udacity", "date": "2016-2017", "url": "Udacity.com" }],
 
 	"display": function () {
@@ -90,17 +90,17 @@ var education = {
             var eduEntry = $(HTMLschoolStart);
             eduEntry.append(HTMLschoolName.replace("%data%", school.name) + HTMLschoolDegree.replace("%data%", school.degree));
             eduEntry.append(HTMLschoolDates.replace("%data%", school.dates));
-            eduEntry.append(HTMLschoollocation.replace("%data%", school.location));
+            eduEntry.append(HTMLschoolLocation.replace("%data%", school.location));
             eduEntry.append(HTMLschoolMajor.replace("%data%", school.majors.join(", ")));
             edu.append(eduEntry);
         });
         edu.append(HTMLonlineClasses);
-        this.onlineCourses.forEach((course) => {
+        this.onlineCourses.forEach(function(course) {
             var eduEntry = $(HTMLschoolStart);
             eduEntry.append(HTMLonlineTitle.replace("%data%", course.title) + HTMLonlineSchool.replace("%data%", course.school));
             eduEntry.append(HTMLonlineDates.replace("%data%", course.dates));
             eduEntry.append(HTMLonlineURL.replace("%data%", course.url));
-            ed.append(edEntry);
+            edu.append(eduEntry);
         });
     }
 
@@ -108,10 +108,10 @@ var education = {
 
 //Projects	
 var projects = {
-    projects: [{ "name": "Article", "dates": "June 2017", "description": "HTML" },
-    { "name": "Card", "dates": "July 2017", "description": "HTML" },
-    { "name": "Portfolio", "dates": "Aug 2017", "description": "HTML" },
-    { "name": "Resume", "dates": "Sept 2017", "description": "JavaScript" }
+    projects: [{ "name": "Article", "dates": "June 2017", "description": "HTML", "images": []},
+        { "name": "Card", "dates": "July 2017", "description": "HTML", "images": [] },
+        { "name": "Portfolio", "dates": "Aug 2017", "description": "HTML", "images": [] },
+        { "name": "Resume", "dates": "Sept 2017", "description": "JavaScript", "images": [] }
     ],
     "display": function () {
         var proj = $("#projects");
@@ -120,8 +120,7 @@ var projects = {
             projEntry.append(HTMLprojectTitle.replace("%data%", projects.name));
             projEntry.append(HTMLprojectDates.replace("%data%", projects.dates));
             projEntry.append(HTMLprojectDescription.replace("%data%", projects.description));
-            project.images.forEach((img) => {
-                projEntry.append(HTMLprojectImage.replace("%data%", img));
+            projects.images.forEach((img) => {projEntry.append(HTMLprojectImage.replace("%data%", img));
             });
             proj.append(projEntry);
         });
